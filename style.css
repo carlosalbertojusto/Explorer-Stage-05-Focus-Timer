@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --tt-primary-color: #323238;
+  --bg-card-focus-color: #02799d;
+  --bg-card-primary-color: #e1e1e6;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rem;
+  background-color: hsla(240, 9%, 89%, 0.7);
+  font-family: "Roboto", sans-serif;
+}
+
+.displayTimer {
+  font-size: 12rem;
+  color: var(--tt-primary-color);
+  text-align: center;
+  font-weight: 500;
+}
+
+.controls {
+  margin-top: 4.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.controls button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+  transition: ease 500ms;
+}
+
+.sounds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.sounds button {
+  border-radius: 2.4rem;
+  padding: 4.8rem;
+  background-color: var(--bg-card-primary-color);
+  cursor: pointer;
+}
+
+.sounds button:hover {
+  transform: scale(1.1);
+  transition: ease 500ms;
+}
+
+.sounds button svg {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+.rain svg path {
+  fill: var(--tt-primary-color);
+}
+
+.sounds button:focus {
+  background-color: var(--bg-card-focus-color);
+  transition: ease-in 0.3s;
+}
+
+.rain:focus path,
+.tree:focus path,
+.fireplace:focus path,
+.coffeStore:focus path {
+  fill: #ffffff;
+}
