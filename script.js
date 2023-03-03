@@ -8,10 +8,16 @@ const buttonSoundRain = document.querySelector(".rain")
 const buttonSoundTree = document.querySelector(".tree")
 const buttonSoundFireplace = document.querySelector(".fireplace")
 const buttonSoundCoffeeShop = document.querySelector(".coffeeShop")
+const switchButtonLightMode = document.querySelector("#light")
+const switchButtonDarkMode = document.querySelector("#dark")
+const containerSwitch = document.querySelector(".mode")
+let volumeValue = document.querySelector(".volume")
+
 let timerTimeOut
 let newMinutes
 let newSeconds
 let isFocused
+
 let rain = new Audio("./sounds/Chuva.wav")
 let tree = new Audio("./sounds/Floresta.wav")
 let fireplace = new Audio("./sounds/Lareira.wav")
@@ -86,6 +92,19 @@ function stopSoundCoffeeShop() {
   coffeeShop.pause()
 }
 
+function switchMode() {
+  const html = document.documentElement
+  html.classList.toggle("dark")
+
+  if (html.classList.contains("dark")) {
+    switchButtonDarkMode.classList.remove("hide")
+    switchButtonLightMode.classList.add("hide")
+  } else {
+    switchButtonLightMode.classList.remove("hide")
+    switchButtonDarkMode.classList.add("hide")
+  }
+}
+
 play.addEventListener("click", playTimer)
 stop.addEventListener("click", stopTimer)
 addMoreTime.addEventListener("click", addMoreMinutes)
@@ -100,3 +119,11 @@ buttonSoundRain.addEventListener("blur", stopSoundRain)
 buttonSoundTree.addEventListener("blur", stopSoundTree)
 buttonSoundFireplace.addEventListener("blur", stopSoundFireplace)
 buttonSoundCoffeeShop.addEventListener("blur", stopSoundCoffeeShop)
+
+containerSwitch.addEventListener("click", switchMode)
+volumeValue.addEventListener("input", () => {
+  rain.volume = volumeValue.value / 100
+  tree.volume = volumeValue.value / 100
+  fireplace.volume = volumeValue.value / 100
+  coffeeShop.volume = volumeValue.value / 100
+})
